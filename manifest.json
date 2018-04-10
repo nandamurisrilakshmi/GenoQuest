@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "GenomicQuest",
+  "description": "This extension shows a family member suggestions result for the current page",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' https://genomelink.io; object-src 'self'",
+
+"background": {
+        "scripts": ["jquery-3.1.1.min.js","popup.js","aws-sdk.js","aws-sdk.min.js","background1.js"]
+    },
+
+  "permissions": ["tabs","activeTab",
+"identity",
+"*://familysearch.org/*",
+ "tabs",
+ "https://facebook.com/connect/*",
+ "https://genomelink.io/*",
+ "http://google.com/",
+"https://connect.facebook.net/en_US/all.js",
+"storage"  ]
+}
+
