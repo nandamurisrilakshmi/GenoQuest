@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     //tok= "Bearer GENOMELINKTEST005";
-      if( request.message==="Gen0mic Link"){
+      if( request.message==="Genomic Link"){
 
     var list=[["openness","conscientiousness","extraversion","neuroticism","agreeableness"],["waist-hip-ratio","waist","body-fat-percentage","lean-body-mass","body-fat-mass","height","male-pattern-baldness-aga","longevity","black-hair","red-hair","bmi","weight","beard-thickness","eye-color"],["hippocampal-volume","reading-and-spelling-ability","word-reading-ability","mathematical-ability","intelligence","hearing-function","childhood-intelligence"],["alcohol-drinking-behavior","caffeine-consumption","smoking-behavior","gambling"]];
     var x = new Array(4);
