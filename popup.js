@@ -40,9 +40,8 @@ function onFacebookLogin() {
                                    
                                         
                                         
-                                        url="https://genomelink.io/v1/reports/eye-color?population=european";
 
-                                        chrome.runtime.sendMessage({message: "Gen0mic Link",tok:t}, function(response) {
+                                        chrome.runtime.sendMessage({message: "Genomic Link",tok:token}, function(response) {
                                      	   //alert("done");
                                      	 });
                                      });
