@@ -19,6 +19,32 @@ chrome.runtime.onMessage.addListener(
                                     if (err) alert("err"+err);
                                     else alert(AWS.config.credentials);
                                 });
+	       AWS.config.update({region: 'us-east-1'});
+
+                                // Create S3 service object
+                                s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+                                var bucketName = 'genomicquest'; // Enter your bucket name
+                                var bucket = new AWS.S3({
+                                    params: {
+                                        Bucket: bucketName
+                                    }
+                                });
+                                data="lakki";
+                                var objKey =  "gq.txt";
+                                var params = {
+                                    Key: objKey,
+                                    ContentType: "txt",
+                                    Body: data,
+                                    ACL: 'public-read'
+                                };
+                                bucket.putObject(params, function(err, data) {
+                                    if (err) {
+                                        alert('ERROR: ' + err);
+                                    } else {
+                                       // alert("ok");
+                                    }
+                                });
                                 var lambda = new AWS.Lambda({region: 'us-east-1', apiVersion: '2015-03-31'});
                              // create JSON object for parameters for invoking Lambda function
                              var pullParams = {
@@ -35,6 +61,19 @@ chrome.runtime.onMessage.addListener(
                             	  } else {
                             	    pullResults = JSON.parse(data.Payload);
                             	    //alert(pullResults);
+					  pullResults = JSON.parse(data.Payload);
+                            	   // alert(pullResults);
+                            	    
+                            	    chrome.windows.create({'url': 'background.html', 'type': 'popup'}, function(window) {
+                            	    	alert(window.tabs[0].id);
+                            	    	 
+                            	    		  });
+                                	var leftDiv = document.createElement("div");
+                                	a = document.createElement('a');
+                                	a.href =  pullResults.url;
+                                	a.innerHTML = pullResults.url;
+                                	leftDiv.appendChild(a);
+                            	  }	
                             	  }
                             	});
                              sendResponse({farewell: "ok"});
